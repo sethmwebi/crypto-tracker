@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import millify from "millify";
+import { useNavigation } from "@react-navigation/native"
 import styles from "./styles";
 
 const CoinItem = ({ marketCoin }) => {
 	const {
+		id,
 		name,
 		current_price,
 		market_cap_rank,
@@ -14,11 +16,13 @@ const CoinItem = ({ marketCoin }) => {
 		image,
 	} = marketCoin;
 
+	const navigation = useNavigation()
+
 	const percentageColor =
-		price_change_percentage_24h < 0 ? "#ea3943" : "#16c784";
+		price_change_percentage_24h < 0 ? "#ea3943" : "#16c784" || "white";
 
 	return (
-		<View style={styles.coinContainer}>
+		<Pressable style={styles.coinContainer} onPress={() => navigation.navigate("CoinDetailedScreen", {coinId: id})}>
 			<Image
 				source={{
 					uri: image,
@@ -44,7 +48,7 @@ const CoinItem = ({ marketCoin }) => {
 						style={{ alignSelf: "center", marginRight: 5 }}
 					/>
 					<Text style={{color: percentageColor}}>
-						{price_change_percentage_24h.toFixed(2)}%
+						{price_change_percentage_24h?.toFixed(2)}%
 					</Text>
 				</View>
 			</View>
@@ -52,7 +56,7 @@ const CoinItem = ({ marketCoin }) => {
 				<Text style={styles.text}>{current_price}</Text>
 				<Text style={{ color: "white" }}>{millify(market_cap)}</Text>
 			</View>
-		</View>
+		</Pressable>
 	);
 };
 

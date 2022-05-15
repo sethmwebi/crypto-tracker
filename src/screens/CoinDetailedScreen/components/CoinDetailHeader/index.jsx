@@ -42,7 +42,7 @@ const CoinDetailHeader = (props) => {
 				name={checkIfCoinIsWatchlisted() ? "star" : "star-o"}
 				size={25}
 				color={checkIfCoinIsWatchlisted() ? "#FFBF00" : "white"}
-				onPress={() => removeWatchlistCoinId(coinId.toString())}
+				onPress={handleWatchListCoin}
 			/>
 		</View>
 	);

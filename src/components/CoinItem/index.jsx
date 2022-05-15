@@ -54,7 +54,7 @@ const CoinItem = ({ marketCoin }) => {
 			</View>
 			<View style={{ marginLeft: "auto", alignItems: "flex-end" }}>
 				<Text style={styles.text}>{current_price}</Text>
-				<Text style={{ color: "white" }}>{millify(market_cap)}</Text>
+				<Text style={{ color: "white" }}>{millify(market_cap, { precision: 2})}</Text>
 			</View>
 		</Pressable>
 	);

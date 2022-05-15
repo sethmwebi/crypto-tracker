@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 	percentageChange: {
 		color: "white",
 		fontWeight: "500",
-		fontSize: 17
+		fontSize: 17,
 	},
 	balanceContainer: {
 		flexDirection: "row",
